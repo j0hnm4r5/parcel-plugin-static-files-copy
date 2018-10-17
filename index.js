@@ -1,8 +1,8 @@
-const fs = require(`file-system`);
-const path = require(`path`);
+const fs = require("file-system");
+const path = require("path");
 
 module.exports = (bundler) => {
-	bundler.on(`bundled`, (bundle) => {
+	bundler.on("bundled", (bundle) => {
 		const copyDir = (staticDir, bundleDir) => {
 			if (fs.existsSync(staticDir)) {
 				const copy = (filepath, relative, filename) => {
@@ -13,9 +13,12 @@ module.exports = (bundler) => {
 						const destStat = fs.statSync(dest);
 						const srcStat = fs.statSync(filepath);
 						if (destStat.mtime <= srcStat.mtime) {
-							// File was modified - let's copy it and inform about overwriting.
 							console.info(
-								`Info: Static file '${filepath}' do already exist in '${bundleDir}'. Overwriting.`
+								"Info: Static file " +
+									filepath +
+									" already exists in " +
+									bundleDir +
+									". Overwriting."
 							);
 							fs.copyFile(filepath, dest);
 						}
@@ -26,12 +29,14 @@ module.exports = (bundler) => {
 				fs.recurseSync(staticDir, copy);
 			} else {
 				console.warn(
-					`Warning: Static directory '${staticDir}' do not exist. Skipping.`
+					"Warning: Static directory " +
+						staticDir +
+						" does not exist. Skipping."
 				);
 			}
 		};
 
-		const staticDir = `assets`;
+		const staticDir = "assets";
 		const bundleDir = path.dirname(bundle.name);
 		copyDir(staticDir, bundleDir);
 	});
