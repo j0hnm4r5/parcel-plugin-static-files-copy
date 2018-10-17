@@ -3,6 +3,12 @@ const path = require(`path`);
 
 module.exports = (bundler) => {
 	bundler.on(`bundled`, (bundle) => {
+		console.log(
+			`Bundle ${
+				bundle.name
+			} created. Searching for assets folder.`
+		);
+
 		const staticDir = `assets`;
 		const bundleDir = path.dirname(bundle.name);
 
