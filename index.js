@@ -1,7 +1,7 @@
 const fs = require(`file-system`);
 const path = require(`path`);
 
-const __parentDir = path.dirname(process.mainModule.filename);
+const __parentDir = path.dirname(module.parent.filename);
 
 module.exports = (bundler) => {
 	bundler.on(`bundled`, () => {
