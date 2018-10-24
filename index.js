@@ -2,10 +2,8 @@ const fs = require(`file-system`);
 const path = require(`path`);
 
 module.exports = (bundler) => {
-	// console.log(bundler);
-
 	bundler.on(`bundled`, (bundle) => {
-		// console.log(bundle);
+		console.log(bundle);
 		console.log(
 			`Bundle ${
 				bundle.name
