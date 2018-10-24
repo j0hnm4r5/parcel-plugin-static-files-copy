@@ -1,7 +1,7 @@
 const fs = require(`file-system`);
 
 module.exports = (bundler) => {
-	bundler.on(`buildStart`, () => {
+	bundler.on(`bundled`, () => {
 		console.log(`Bundle created. Searching for assets folder.`);
 
 		const staticDir = `assets`;
