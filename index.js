@@ -10,7 +10,7 @@ module.exports = (bundler) => {
 		);
 
 		const staticDir = `assets`;
-		const bundleDir = path.dirname(bundle.name);
+		const bundleDir = __dirname;
 
 		console.log(bundleDir);
 
