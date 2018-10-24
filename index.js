@@ -3,7 +3,6 @@ const path = require(`path`);
 
 module.exports = (bundler) => {
 	bundler.on(`bundled`, (bundle) => {
-		console.log(bundle);
 		console.log(
 			`Bundle ${
 				bundle.name
