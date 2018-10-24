@@ -12,6 +12,8 @@ module.exports = (bundler) => {
 		const staticDir = `assets`;
 		const bundleDir = path.dirname(bundle.name);
 
+		console.log(bundleDir);
+
 		if (fs.existsSync(staticDir)) {
 			console.log(
 				`Found assets folder. Beginning to copy files to ./dist`
