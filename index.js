@@ -1,14 +1,11 @@
 const fs = require(`file-system`);
-const path = require(`path`);
 
 module.exports = (bundler) => {
 	bundler.on(`bundled`, () => {
 		console.log(`Bundle created. Searching for assets folder.`);
 
 		const staticDir = `assets`;
-
-		const __rootName = __dirname.split(`node_modules`)[0];
-		console.log(__rootName, `${__rootName}/dist/${staticDir}`);
+		const __rootName = __dirname.split(`/node_modules`)[0];
 
 		if (fs.existsSync(staticDir)) {
 			console.log(
