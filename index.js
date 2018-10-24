@@ -1,18 +1,10 @@
 const fs = require(`file-system`);
-const path = require(`path`);
 
 module.exports = (bundler) => {
-	bundler.on(`bundled`, (bundle) => {
-		console.log(
-			`Bundle ${
-				bundle.name
-			} created. Searching for assets folder.`
-		);
+	bundler.on(`buildStart`, () => {
+		console.log(`Bundle created. Searching for assets folder.`);
 
 		const staticDir = `assets`;
-		const bundleDir = __dirname;
-
-		console.log(bundleDir);
 
 		if (fs.existsSync(staticDir)) {
 			console.log(
@@ -21,7 +13,7 @@ module.exports = (bundler) => {
 			const copy = (filepath, relative, filename) => {
 				const dest = filepath.replace(
 					staticDir,
-					`${bundleDir}/${staticDir}`
+					`${__dirname}/${staticDir}`
 				);
 				if (!filename) {
 					fs.mkdir(filepath, dest);
