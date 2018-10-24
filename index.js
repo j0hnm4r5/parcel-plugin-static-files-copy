@@ -17,8 +17,10 @@ module.exports = (bundler) => {
 				`Found assets folder. Beginning to copy files to ./dist`
 			);
 			const copy = (filepath, relative, filename) => {
-				console.log(filepath, relative, filename);
-				const dest = filepath.replace(staticDir, bundleDir);
+				const dest = filepath.replace(
+					staticDir,
+					`${bundleDir}/${staticDir}`
+				);
 				if (!filename) {
 					fs.mkdir(filepath, dest);
 				} else if (fs.existsSync(dest)) {
